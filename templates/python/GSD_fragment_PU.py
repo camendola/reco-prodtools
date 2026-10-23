@@ -2,12 +2,12 @@
 # using: 
 # Revision: 1.19 
 # Source: /local/reps/CMSSW/CMSSW/Configuration/Applications/python/ConfigBuilder.py,v 
-# with command line options: SingleElectronPt10_pythia8_cfi --conditions auto:phase2_realistic_T35 -n 10 --era Phase2C22I13M9 --eventcontent FEVTDEBUG -s GEN,SIM,DIGI:pdigi_valid,L1TrackTrigger,L1,L1P2GT,DIGI2RAW,HLT:@relvalRun4 --datatier GEN-SIM-DIGI-RAW --beamspot NoSmear --geometry ExtendedRun4D121 --pileup AVE_30_BX_25ns --pileup_input das:/RelValMinBias_14TeV/CMSSW_14_2_0_pre4-142X_mcRun4_realistic_v1_STD_2026_noPU-v1/GEN-SIM --no_exec --python_filename=GSD_fragment_PU.py
+# with command line options: SingleElectronPt10_pythia8_cfi --conditions auto:phase2_realistic_T35 -n 10 --era Phase2C26I13M9 --eventcontent FEVTDEBUG -s GEN,SIM,DIGI:pdigi_valid,L1TrackTrigger,L1,L1P2GT,DIGI2RAW,HLT:@relvalRun4 --datatier GEN-SIM-DIGI-RAW --beamspot NoSmear --geometry ExtendedRun4D128 --pileup AVE_30_BX_25ns --pileup_input file:minbias_placeholder.root --no_exec --python_filename=GSD_fragment_PU.py
 import FWCore.ParameterSet.Config as cms
 
-from Configuration.Eras.Era_Phase2C22I13M9_cff import Phase2C22I13M9
+from Configuration.Eras.Era_Phase2C26I13M9_cff import Phase2C26I13M9
 
-process = cms.Process('HLT',Phase2C22I13M9)
+process = cms.Process('HLT',Phase2C26I13M9)
 
 # import of standard configurations
 process.load('Configuration.StandardSequences.Services_cff')
@@ -15,8 +15,8 @@ process.load('SimGeneral.HepPDTESSource.pythiapdt_cfi')
 process.load('FWCore.MessageService.MessageLogger_cfi')
 process.load('Configuration.EventContent.EventContent_cff')
 process.load('SimGeneral.MixingModule.mix_POISSON_average_cfi')
-process.load('Configuration.Geometry.GeometryExtendedRun4D121Reco_cff')
-process.load('Configuration.Geometry.GeometryExtendedRun4D121_cff')
+process.load('Configuration.Geometry.GeometryExtendedRun4D128Reco_cff')
+process.load('Configuration.Geometry.GeometryExtendedRun4D128_cff')
 process.load('Configuration.StandardSequences.MagneticField_cff')
 process.load('Configuration.StandardSequences.Generator_cff')
 process.load('Configuration.StandardSequences.VtxSmearedNoSmear_cff')
@@ -57,7 +57,7 @@ process.options = cms.untracked.PSet(
         numberOfConcurrentIOVs = cms.untracked.uint32(0)
     ),
     fileMode = cms.untracked.string('FULLMERGE'),
-    forceEventSetupCacheClearOnNewRun = cms.untracked.bool(False),
+    forceEventSetupCacheClearOnNewRun = cms.obsolete.untracked.bool,
     holdsReferencesToDeleteEarly = cms.untracked.VPSet(),
     makeTriggerResults = cms.obsolete.untracked.bool,
     modulesToCallForTryToContinue = cms.untracked.vstring(),
