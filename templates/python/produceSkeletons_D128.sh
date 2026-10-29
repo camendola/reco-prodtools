@@ -75,6 +75,20 @@ action() {
     -s RAW2DIGI,L1Reco,RECO,RECOSIM \
     --datatier GEN-SIM-RECO \
     --geometry ExtendedRun4D128 \
+    --procModifier ticl_v6 \
+    --no_exec \
+    --python_filename=RECO_ticl_v6_fragment.py
+
+  cmsDriver.py step4 \
+    --conditions auto:phase2_realistic_T35 \
+    -n 10 \
+    --era Phase2C26I13M9 \
+    --eventcontent FEVTDEBUG \
+    --runUnscheduled \
+    -s RAW2DIGI,L1Reco,RECO,RECOSIM \
+    --datatier GEN-SIM-RECO \
+    --geometry ExtendedRun4D128 \
+    --procModifier ticl_v6 \
     --no_exec \
     --processName=NTUP \
     --python_filename=NTUP_fragment.py
